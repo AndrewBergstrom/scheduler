@@ -22,7 +22,7 @@ function dailySched() {
 
     html += `<div class="row">
         <div class="col-md-1 hour d-flex justify-content-center align-items-center">${time}</div> 
-        <input class='user-event-input col-md-10 event-input-block ${color}' id="${time}Row"> 
+        <input class='user-event-input col-md-10 event-input-block ${color}' value="${localStorage.getItem(`${hr}`)|| "" }" id="${time}Row"> 
         <div class="col-md-1 saveBtn" data-hour=${hr}><i class="fas fa-save pl-4 pt-4 " aria-hidden="true"></i></div> 
     </div>`
 
@@ -46,7 +46,7 @@ function userTask() {
   }
 
   // Render userInput to the DOM
-  dailySched();
+ 
 }
 
 function storedInput() {
@@ -62,9 +62,9 @@ $(document).on('click', '.saveBtn', function (event) {
       $(this).prev().val()
       console.log($(this).prev().val())
         
+        
+      localStorage.setItem(saveInput, $(this).prev().val())
       
-      localStorage.setItem("saveInput", $(this).prev().val())
-  
 
 })
 
