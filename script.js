@@ -1,12 +1,14 @@
 
 var currentDate = $("#currentDay");
-currentDate.text(moment().format('MMMM Do YYYY, h:mm a'))
+
+setInterval(() => {
+  currentDate.text(moment().format('MMMM Do YYYY, h:mm: a'))
+}, 10);
+
 
 var currentTime = moment().format('H');
 
 var userInput = [];
-
-
 
 
 function dailySched() {
@@ -22,7 +24,7 @@ function dailySched() {
 
     html += `<div class="row">
         <div class="col-md-1 hour d-flex justify-content-center align-items-center">${time}</div> 
-        <input class='user-event-input col-md-10 event-input-block ${color}' value="${localStorage.getItem(`${hr}`)|| "" }" id="${time}Row"> 
+        <input class='user-event-input col-md-10 event-input-block ${color}' value="${localStorage.getItem(`${hr}`) || ""}" id="${time}Row"> 
         <div class="col-md-1 saveBtn" data-hour=${hr}><i class="fas fa-save pl-4 pt-4 " aria-hidden="true"></i></div> 
     </div>`
 
@@ -45,8 +47,8 @@ function userTask() {
     userInput = storedInput;
   }
 
-  // Render userInput to the DOM
- 
+  
+
 }
 
 function storedInput() {
@@ -58,13 +60,13 @@ function storedInput() {
 
 
 $(document).on('click', '.saveBtn', function (event) {
-      var saveInput = $(this).attr("data-hour")
-      $(this).prev().val()
-      console.log($(this).prev().val())
-        
-        
-      localStorage.setItem(saveInput, $(this).prev().val())
-      
+  var saveInput = $(this).attr("data-hour")
+  $(this).prev().val()
+  console.log($(this).prev().val())
+
+
+  localStorage.setItem(saveInput, $(this).prev().val())
+
 
 })
 
@@ -73,21 +75,10 @@ $(document).on('click', '.saveBtn', function (event) {
 
 
 
-//     var userInput = localStorage.setItem('time', +i);
-//     console.log(userInput)
 
 
 
 
 
 
-
-// // ===== Looping through 9am to 17pm ===== //
-// for (i = 9; i < 18; i++) {
-//     // Grab value from local storage.
-//     var inputValue = localStorage.getItem('time', + i);
-//     if (!inputValue) {
-//         inputValue = '';
-//     }
-// }
 
